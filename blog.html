@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World News24 Blog Page</title>
+    <!-- daisyUI and Tailwind CSS link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main class="container mx-auto my-10">
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box my-5"
+      >
+        <input type="checkbox" class="peer" />
+
+        <div class="collapse-title text-xl font-medium">
+          1. Difference between var, let, and const in JavaScript
+        </div>
+        <div class="collapse-content">
+          <p>
+            Var variables can be updated and re-declared within its scope; let
+            variables can be updated but not re-declared; const variables can
+            neither be updated nor re-declared. They are all hoisted to the top
+            of their scope. But while var variables are initialized with
+            undefined , let and const variables are not initialized.
+          </p>
+        </div>
+      </div>
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box my-5"
+      >
+        <input type="checkbox" class="peer" />
+
+        <div class="collapse-title text-xl font-medium">
+          2. Difference between regular functions and arrow functions
+        </div>
+        <div class="collapse-content">
+          <p>
+            Regular functions created using function declarations or expressions
+            are constructible and callable. Since regular functions are
+            constructible, they can be called using the new keyword. However,
+            the arrow functions are only callable and not constructible, i.e
+            arrow functions can never be used as constructor functions.
+          </p>
+        </div>
+      </div>
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box my-5"
+      >
+        <input type="checkbox" class="peer" />
+
+        <div class="collapse-title text-xl font-medium">
+          3. Why should we use template literals?
+        </div>
+        <div class="collapse-content">
+            <p>
+                <ul class="list-disc pl-5">
+                    <h5 class="text-lg">String interpolation makes things so much simpler.</h5>
+                    <li>only one pair of quotes (back-ticks)</li>
+                    <li>embedded (interpolated) variables and expressions</li>
+                    <li>multiple lines within the quotes (pre-formatted text)</li>
+                    <li>
+                        treated like strings so can be assigned or be a return value
+                    </li>
+                </ul>
+            </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
