@@ -24,6 +24,9 @@ const displayAllNewsCategory = async () => {
       const data = await res.json();
       const newsContainer = document.getElementById("news-container");
       newsContainer.textContent = "";
+      if (data.status === false) {
+        newsContainer.innerHTML = `<h2 class="text-4xl text-center text-red-400">No news found!</h2>`;
+      }
       data.data.forEach((news) => {
         const newsDiv = document.createElement("div");
         const { thumbnail_url, title, total_view, details, author, _id } = news;
@@ -48,11 +51,15 @@ const displayAllNewsCategory = async () => {
                 />
               </div>
               <div class="ml-5">
-                <h6 class="text-md font-semibold">${name}</h6>
+                <h6 class="text-md font-semibold">${
+                  name === null ? "No data found!" : name
+                }</h6>
                 <p class="text-xs">${published_date}</p>
               </div>
             </div>
-            <div>Views : ${total_view}</div>
+            <div>Views : ${
+              total_view === null ? "No data found!" : total_view
+            }</div>
             <div>
             <div class="card-actions justify-end">
             <label onclick="loadNewsDetails('${_id}')" for="my-modal-3" class="btn modal-button btn-primary">Show Details</label>
@@ -78,7 +85,6 @@ const loadNewsDetails = async (id) => {
 };
 
 const displayNewsDetails = async (newsDetails) => {
-  console.log(newsDetails);
   const { title, total_view, image_url, details, author } = newsDetails;
   const { name, published_date } = author;
 
@@ -89,8 +95,12 @@ const displayNewsDetails = async (newsDetails) => {
   <h3 class="text-lg font-bold"> ${title} </h3>
   <p class="py-4"><img src="${image_url}"/></p>
   <p class="py-4">${details}</p>
-  <p class="pt-2"><span class="font-semibold">Total view</span> : ${total_view}</p>
-  <p class="pt-1"><span class="font-semibold">Author</span> : ${name}</p>
+  <p class="pt-2"><span class="font-semibold">Total view</span> : ${
+    total_view === null ? "No data found!" : total_view
+  }</p>
+  <p class="pt-1"><span class="font-semibold">Author</span> : ${
+    name === null ? "No data found!" : name
+  }</p>
   <p class="pt-1 text-sm"><span class="font-semibold">Published Date</span> : ${published_date}</p>
   `;
 };
