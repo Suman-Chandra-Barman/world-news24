@@ -1,10 +1,14 @@
 // load all news category
 const loadAllNewsCategory = async () => {
-  const res = await fetch(
-    `https://openapi.programming-hero.com/api/news/categories`
-  );
-  const data = await res.json();
-  return data.data.news_category;
+  try {
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/news/categories`
+    );
+    const data = await res.json();
+    return data.data.news_category;
+  } catch (error) {
+    console(error);
+  }
 };
 
 // display all news category
@@ -18,6 +22,7 @@ const displayAllNewsCategory = async () => {
     categoryContainer.appendChild(categoryLi);
 
     categoryLi.addEventListener("click", async function loadNewsData() {
+      document.getElementById("spinner").classList.remove("hidden");
       const res = await fetch(
         `https://openapi.programming-hero.com/api/news/category/${category_id}`
       );
@@ -26,6 +31,7 @@ const displayAllNewsCategory = async () => {
       newsContainer.textContent = "";
       if (data.status === false) {
         newsContainer.innerHTML = `<h2 class="text-4xl text-center text-red-400">No news found!</h2>`;
+        document.getElementById("spinner").classList.add("hidden");
       }
       data.data.forEach((news) => {
         const newsDiv = document.createElement("div");
@@ -57,9 +63,10 @@ const displayAllNewsCategory = async () => {
                 <p class="text-xs">${published_date}</p>
               </div>
             </div>
-            <div>Views : ${
+            <div>
+            <i class="fa-solid fa-eye mr-3"></i>${
               total_view === null ? "No data found!" : total_view
-            }</div>
+            }M</div>
             <div>
             <div class="card-actions justify-end">
             <label onclick="loadNewsDetails('${_id}')" for="my-modal-3" class="btn modal-button btn-primary">Show Details</label>
@@ -71,6 +78,7 @@ const displayAllNewsCategory = async () => {
         </div>
         `;
         newsContainer.appendChild(newsDiv);
+        document.getElementById("spinner").classList.add("hidden");
       });
     });
   });
@@ -97,7 +105,7 @@ const displayNewsDetails = async (newsDetails) => {
   <p class="py-4">${details}</p>
   <p class="pt-2"><span class="font-semibold">Total view</span> : ${
     total_view === null ? "No data found!" : total_view
-  }</p>
+  }M</p>
   <p class="pt-1"><span class="font-semibold">Author</span> : ${
     name === null ? "No data found!" : name
   }</p>
