@@ -33,9 +33,15 @@ const displayAllNewsCategory = async () => {
         newsContainer.innerHTML = `<h2 class="text-4xl text-center text-red-400">No news found!</h2>`;
         document.getElementById("spinner").classList.add("hidden");
       }
-      data.data.forEach((news) => {
+
+      const mostViewData = data.data.sort(
+        (a, b) => b.total_view - a.total_view
+      );
+
+      mostViewData.forEach((news) => {
         const newsDiv = document.createElement("div");
         const { thumbnail_url, title, total_view, details, author, _id } = news;
+        // console.log(total_view);
         const { name, img, published_date } = author;
         newsDiv.innerHTML = `
         <div class="card lg:card-side bg-base-100 shadow-xl p-5 my-5">
