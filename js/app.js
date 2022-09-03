@@ -58,8 +58,8 @@ const displayAllNewsCategory = async () => {
             <p>${
               details.length > 500 ? details.slice(0, 500) + "..." : details
             }</p>
-            <div class="flex justify-between mt-4 items-center">
-            <div class="flex justify-center items-center">
+            <div class="flex justify-between flex-col gap-5 md:flex-row mt-4 md:items-center">
+            <div class="flex md:justify-center items-center">
               <div>
                 <img
                   src="${img}"
@@ -79,7 +79,7 @@ const displayAllNewsCategory = async () => {
               total_view === null ? "No data found!" : total_view
             }M</div>
             <div>
-            <div class="card-actions justify-end">
+            <div class="card-actions md:justify-end">
             <label onclick="loadNewsDetails('${_id}')" for="my-modal-3" class="btn modal-button btn-primary">Show Details</label>
             </div>
             </div>
@@ -95,6 +95,7 @@ const displayAllNewsCategory = async () => {
   });
 };
 
+// news details
 const loadNewsDetails = async (id) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/news/${id}`

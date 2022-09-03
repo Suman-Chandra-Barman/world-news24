@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>World News24</title>
+    <!-- fontawesome link -->
     <script
       src="https://kit.fontawesome.com/7e52c6b877.js"
       crossorigin="anonymous"
@@ -23,16 +24,41 @@
       <!-- navigation part start -->
       <nav>
         <div class="navbar bg-base-100">
-          <div class="flex-1">
+          <div class="navbar-start">
+            <div class="dropdown">
+              <label tabindex="0" class="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </label>
+              <ul
+                tabindex="0"
+                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li><a>News</a></li>
+                <li><a href="blog.html">Blog</a></li>
+              </ul>
+            </div>
             <a class="btn btn-ghost uppercase text-xl text-orange-400 pl-0"
               ><span class="bg-neutral-600 mr-4 p-2 rounded-md">World </span>
               News24</a
             >
           </div>
-          <div class="flex-none">
+          <div class="navbar-end hidden lg:flex">
             <ul class="menu menu-horizontal p-0">
               <li><a>News</a></li>
-              <li><a href="./blog.html">Blog</a></li>
+              <li><a href="blog.html">Blog</a></li>
             </ul>
           </div>
         </div>
@@ -43,7 +69,7 @@
       <nav>
         <ul
           id="category-container"
-          class="menu menu-horizontal bg-base-100 rounded-box flex justify-between"
+          class="menu menu-horizontal bg-base-100 rounded-box flex justify-between flex-col md:flex-row"
         ></ul>
       </nav>
     </header>
