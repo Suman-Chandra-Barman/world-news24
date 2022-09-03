@@ -26,7 +26,7 @@ const displayAllNewsCategory = async () => {
       newsContainer.textContent = "";
       data.data.forEach((news) => {
         const newsDiv = document.createElement("div");
-        const { thumbnail_url, title, total_view, details, author } = news;
+        const { thumbnail_url, title, total_view, details, author, _id } = news;
         const { name, img, published_date } = author;
         newsDiv.innerHTML = `
         <div class="card lg:card-side bg-base-100 shadow-xl p-5 my-5">
@@ -55,7 +55,7 @@ const displayAllNewsCategory = async () => {
             <div>Views : ${total_view}</div>
             <div>
             <div class="card-actions justify-end">
-                <button class="btn btn-primary">Show Details</button>
+            <label onclick="loadNewsDetails('${_id}')" for="my-modal-3" class="btn modal-button btn-primary">Show Details</label>
             </div>
             </div>
             </div>
@@ -67,5 +67,9 @@ const displayAllNewsCategory = async () => {
       });
     });
   });
+};
+
+const loadNewsDetails = () => {
+  console.log("clicked");
 };
 displayAllNewsCategory();
