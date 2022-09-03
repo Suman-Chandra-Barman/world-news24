@@ -29,8 +29,13 @@ const displayAllNewsCategory = async () => {
       const data = await res.json();
       const newsContainer = document.getElementById("news-container");
       newsContainer.textContent = "";
-      if (data.status === false) {
-        newsContainer.innerHTML = `<h2 class="text-4xl text-center text-red-400">No news found!</h2>`;
+      const categoryLength = data.data.length;
+      const categoryLengthContainer =
+        document.getElementById("category-length");
+      if (categoryLength > 0) {
+        categoryLengthContainer.innerHTML = `${categoryLength} items found for ${category_name}`;
+      } else {
+        categoryLengthContainer.innerHTML = `No news found for ${category_name}`;
         document.getElementById("spinner").classList.add("hidden");
       }
 
