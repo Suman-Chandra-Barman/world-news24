@@ -69,7 +69,29 @@ const displayAllNewsCategory = async () => {
   });
 };
 
-const loadNewsDetails = () => {
-  console.log("clicked");
+const loadNewsDetails = async (id) => {
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/news/${id}`
+  );
+  const data = await res.json();
+  displayNewsDetails(data.data[0]);
+};
+
+const displayNewsDetails = async (newsDetails) => {
+  console.log(newsDetails);
+  const { title, total_view, image_url, details, author } = newsDetails;
+  const { name, published_date } = author;
+
+  const modalBody = document.getElementById("modal-body");
+  modalBody.textContent = "";
+  modalBody.innerHTML = `
+  <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+  <h3 class="text-lg font-bold"> ${title} </h3>
+  <p class="py-4"><img src="${image_url}"/></p>
+  <p class="py-4">${details}</p>
+  <p class="pt-2"><span class="font-semibold">Total view</span> : ${total_view}</p>
+  <p class="pt-1"><span class="font-semibold">Author</span> : ${name}</p>
+  <p class="pt-1 text-sm"><span class="font-semibold">Published Date</span> : ${published_date}</p>
+  `;
 };
 displayAllNewsCategory();
